@@ -15,12 +15,11 @@ VarSpeedServo rservo;
 int sure=0, uzaklik=0; //süre ve uzaklık diye iki değişken tanımlıyoruz.
  char r;
 void setup() {
-  myservo.attach(2);  // attaches the servo on pin 9 to the servo object
+  myservo.attach(2);  
   lservo.attach(4);
   rservo.attach(13);
 
-  // ultrasonik sensör Trig pininden ses dalgaları gönderdiği için OUTPUT (Çıkış),
-  // bu dalgaları Echo pini ile geri aldığı için INPUT (Giriş) olarak tanımlanır.
+  
   pinMode(echoPin, INPUT);
   pinMode(trigPin, OUTPUT);
 
@@ -54,8 +53,8 @@ void loop() {
   {
     dur();
     delay(3000); 
-    // h=1;
-    //Serial.println(h);
+     h=1;
+    Serial.println(h);
       r=Serial.read();
       Serial.println(r);
    // delay(100);
@@ -72,11 +71,7 @@ void loop() {
           
          }
     
-     // Serial.println('1');
-     
-      
-      //delay(3000);
-     
+    
     
     geri();  // 150 ms geri git
     delay(150);
@@ -87,17 +82,16 @@ void loop() {
  //  dur();
   }
   else {  // değil ise
-   // h=0;
-   // Serial.println(h);
+    h=0;
+    Serial.println(h);
     ileri(); // ileri git
   }
 
 }
 
 void servo(){
-   //  dur();
-  //  delay(2000);
-    myservo.write(100, 30, true); // move to 180 degrees, use a speed of 30, wait until move is complete
+ 
+    myservo.write(100, 30, true); // move to 100 degrees, use a speed of 30, wait until move is complete
     myservo.write(0, 30, true);
 
     delay(1000);
@@ -113,13 +107,7 @@ void servo(){
     myservo.write(0, 70, true);
     myservo.write(100, 70, true);
      
-   /*  dur();
-    delay(3000); 
-    geri();  // 150 ms geri git
-    delay(150);
-    sag();  // 250 ms sağa dön
-    delay(250); 
-  */
+   
   
   }
 
@@ -137,9 +125,9 @@ void ileri(){  // Robotun ileri yönde hareketi için fonksiyon tanımlıyoruz.
 }
 
 
-void sol(){ // Robotun sağa dönme hareketi için fonksiyon tanımlıyoruz.
+void sol(){ 
 
-  digitalWrite(MotorR1, HIGH); // Sağ motorun ileri hareketi aktif
+  digitalWrite(MotorR1, HIGH); 
   digitalWrite(MotorR2, LOW); // Sağ motorun geri hareketi pasif
   analogWrite(MotorRE, 0); // Sağ motorun hızı 0 (Motor duruyor)
 
@@ -151,7 +139,7 @@ void sol(){ // Robotun sağa dönme hareketi için fonksiyon tanımlıyoruz.
 }
 
 
-void sag(){ // Robotun sola dönme hareketi için fonksiyon tanımlıyoruz.
+void sag(){ // Robotun saga dönme hareketi için fonksiyon tanımlıyoruz.
 
   digitalWrite(MotorL1, LOW); 
   digitalWrite(MotorL2, HIGH); 
